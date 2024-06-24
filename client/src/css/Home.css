@@ -1,63 +1,47 @@
-#canvas {
-  position: absolute;
-  top: 50%;
-  transform: translateY(50%);
-  height: 100svh !important;
-  /* border: 1px solid green; */
-  background-color: rgb(0, 0, 0);
-}
-
 .home-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: red;
-  z-index: 1;
-  border-bottom: 1px solid orange;
-  width: 100%;
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: end;
+  height: 100svh;
+  position: relative;
   background: repeating-linear-gradient(
       to right,
       transparent,
-      transparent 50px,
-      rgb(15, 15, 15) 50px,
-      rgb(30, 30, 30) 51px
+      transparent 15px,
+      rgb(16, 16, 16) 15px,
+      rgb(16, 16, 16) 16px
     ),
     repeating-linear-gradient(
       to bottom,
       transparent,
-      transparent 50px,
-      rgb(40, 40, 40) 50px,
-      rgb(40, 40, 40) 51px
+      transparent 18px,
+      rgb(24, 24, 24) 18px,
+      rgb(24, 24, 24) 19px
     ),
-    linear-gradient(90deg, black, rgb(20, 20, 20));
+    linear-gradient(30deg, rgb(0, 0, 0), rgb(100, 100, 100));
+}
+
+.moon-wrapper {
+  height: 100%;
+}
+
+#canvas {
 }
 
 .digital-twins {
   position: absolute;
-  top: 100%;
-  left: 5%;
+  top: 50%;
+  left: 0;
   transform: translateY(-50%) rotate(180deg);
-  /* z-index: 2; */
-  color: white;
-  font-size: 68px;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  user-select: none;
+  margin-left: 20px;
+  font-size: 64px;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .login-form-wrapper {
-  border: 1px solid orange;
-  width: 400px;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-input {
-  /* height: 80%; */
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  height: 300px;
+  width: 150px;
+  background-color: black;
 }
