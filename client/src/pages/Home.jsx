@@ -1,4 +1,4 @@
-import React, { useRef, Suspense } from "react";
+import React, { useRef, Suspense, useState } from "react";
 import "../css/Home.css";
 import HomeToLogin from "../components/home/HomeToLogin";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
@@ -12,10 +12,11 @@ import {
 } from "@react-three/drei";
 import { DoubleSide } from "three";
 
-const MoonSphere = ({ size }) => {
+const MoonSphere = ({ position, size }) => {
   const texture = useTexture("../src/assets/moonmap1k.jpg");
+  const [clicked, setClicked] = useState(false);
   return (
-    <mesh position={[0, 0, 0]}>
+    <mesh position={position}>
       <ambientLight intensity={1} />
       <directionalLight />
       <Environment preset="night" />
@@ -28,7 +29,6 @@ const MoonSphere = ({ size }) => {
 const Plane = ({ position, rotation, args }) => {
   return (
     <mesh position={position} rotation={rotation}>
-      <ambientLight intensity={1} />
       <planeGeometry args={args} />
       <meshBasicMaterial color="#1a1a1a" side={DoubleSide} />
     </mesh>
@@ -38,28 +38,19 @@ const Plane = ({ position, rotation, args }) => {
 const Home = () => {
   return (
     <>
-      {/* <HomeToLogin /> */}
+      <HomeToLogin />
       <Canvas id="canvas">
         <Suspense>
-          <PerspectiveCamera position={[3, 3, 3]} makeDefault />
+          <PerspectiveCamera position={[10, 10, 10]} makeDefault />
           <OrbitControls autoRotate autoRotateSpeed={0.3} />
           <Stars radius={250} />
-          <MoonSphere size={0.5} />
-          <Plane
-            position={[0, -0.5, 0]}
+          <MoonSphere position={[0, 4, 0]} size={2} />
+          {/* <Plane
+            position={[0, 2, 0]}
             rotation={[Math.PI / 2, 0, 0]}
-            args={[2, 2]}
-          />
-          <Plane
-            position={[0, 0, -1]}
-            rotation={[Math.PI, 0, 0]}
-            args={[2, 1]}
-          />
-          <Plane
-            position={[-1, 0, 0]}
-            rotation={[Math.PI, Math.PI / 2, 0]}
-            args={[2, 1]}
-          />
+            args={[8, 8]}
+          /> */}
+          {/* <gridHelper args={[8, 8]} position={[0, 2, 0]} /> */}
         </Suspense>
       </Canvas>
     </>
