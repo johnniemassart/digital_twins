@@ -1,6 +1,8 @@
 .home-wrapper {
   height: 100svh;
+  border: 1px solid green;
   position: relative;
+  overflow: hidden;
   background: repeating-linear-gradient(
       to right,
       transparent,
@@ -15,7 +17,7 @@
       rgb(24, 24, 24) 18px,
       rgb(24, 24, 24) 19px
     ),
-    linear-gradient(30deg, rgb(0, 0, 0), rgb(100, 100, 100));
+    linear-gradient(30deg, rgb(0, 0, 0), rgb(80, 80, 80));
 }
 
 .moon-wrapper {
@@ -35,13 +37,23 @@
   margin-left: 20px;
   font-size: 64px;
   color: rgba(0, 0, 0, 0.6);
+  /* include mixed blend mode for platform overlay */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.login-form-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 70%;
-  height: 300px;
-  width: 150px;
-  background-color: black;
+.home-input {
+  background-color: transparent;
+  border: none;
+  /* border-bottom: 2px solid white; */
+  height: 30px;
+  width: max-content;
+  /* text-align: center; */
+  color: white;
+  font-size: 24px;
+}
+
+.home-wrapper:focus {
+  outline: none;
 }
