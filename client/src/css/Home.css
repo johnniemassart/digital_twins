@@ -18,6 +18,7 @@
       rgb(24, 24, 24) 19px
     ),
     linear-gradient(30deg, rgb(0, 0, 0), rgb(80, 80, 80));
+  /* background-image: url("../assets/cutting_mat_green.png"); */
 }
 
 .moon-wrapper {
