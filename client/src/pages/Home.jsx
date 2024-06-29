@@ -4,24 +4,6 @@ import Moon from "../components/r3f/Moon";
 import HomeHeader from "../components/home/HomeHeader";
 import LogIn from "../components/home/LogIn";
 
-// add input fields src - https://codesandbox.io/s/add-react-component-onclick-oery4
-
-// const Input = ({ x_coord, y_coord }) => {
-//   return (
-//     <input
-//       //   ref={inputRef}
-//       style={{
-//         position: "absolute",
-//         top: y_coord,
-//         left: x_coord,
-//         transform: `translateY(-50%)`,
-//       }}
-//       className="home-input"
-//       type="text"
-//     />
-//   );
-// };
-
 const Home = () => {
   const [coord, setCoord] = useState([]);
   const handleMouse = (e) => {
@@ -29,23 +11,44 @@ const Home = () => {
     setCoord(coordinates);
   };
   const [inputList, setInputList] = useState([]);
-  const inputRef = useRef();
   const handleInput = () => {
-    // inputRef.current.focus();
     setInputList([
       ...inputList,
       {
         id: inputList.length,
         x_coord: coord[0],
         y_coord: coord[1],
+        value: "",
+        active: true,
       },
     ]);
   };
+  const inputRef = useRef(null);
   useEffect(() => {
-    if (inputList.length > 0) {
+    if (inputList.length > 0 && inputList.active) {
       inputRef.current = inputRef.current.focus();
     }
   }, [inputList]);
+  const handleChange = (id, value) => {
+    const updateInputList = inputList.map((input) => {
+      if (id === input.id) {
+        const newInput = {
+          ...input,
+          value,
+          active: false,
+        };
+        console.log(newInput);
+        return newInput;
+      }
+      return input;
+    });
+    setInputList(updateInputList);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputList);
+    // console.log("hello");
+  };
   return (
     <div
       className="home-wrapper"
@@ -54,21 +57,24 @@ const Home = () => {
     >
       <Moon />
       <HomeHeader />
-      {inputList.map((item) => {
-        return (
-          <input
-            key={item.id}
-            ref={inputRef}
-            style={{
-              position: "absolute",
-              top: item.y_coord,
-              left: item.x_coord,
-              transform: "translate(-10px, -50%)",
-            }}
-            className="home-input"
-          />
-        );
-      })}
+      <form className="login-form-wrapper">
+        {inputList.map((item) => {
+          return (
+            <LogIn
+              key={item.id}
+              id={item.id}
+              inputRef={inputRef}
+              y_coord={item.y_coord}
+              x_coord={item.x_coord}
+              value={item.value}
+              handleChange={(e) => handleChange(item.id, e.target.value)}
+            />
+          );
+        })}
+        <button onClick={handleSubmit} className="home-button">
+          click
+        </button>
+      </form>
     </div>
   );
 };

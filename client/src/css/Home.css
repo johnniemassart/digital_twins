@@ -1,6 +1,6 @@
 .home-wrapper {
   height: 100svh;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   position: relative;
   overflow: hidden;
   background: repeating-linear-gradient(
@@ -23,6 +23,7 @@
 
 .moon-wrapper {
   height: 100%;
+  overflow: hidden;
 }
 
 /* #canvas {
@@ -44,17 +45,24 @@
   user-select: none;
 }
 
+.login-form-wrapper {
+}
+
 .home-input {
   background-color: transparent;
-  border: none;
+  border: 1px solid orange;
   /* border-bottom: 2px solid white; */
   height: 30px;
-  width: max-content;
+  /* width: max-content; */
   /* text-align: center; */
   color: white;
   font-size: 24px;
+  /* overflow: hidden; */
 }
 
 .home-wrapper:focus {
   outline: none;
+}
+
+.home-button {
 }
