@@ -57,7 +57,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True)
     email = models.EmailField(unique=True)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     objects = UserManager()
 
@@ -89,7 +89,6 @@ class Profile(models.Model):
 def create_profile(sender, instance, created, **kwargs):
     if created:
         user_profile = Profile(user=instance)
-        print(user_profile)
         user_profile.save()
         admin = Profile.objects.get(user__username="admin")
         if admin:

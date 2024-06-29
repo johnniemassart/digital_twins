@@ -25,10 +25,10 @@ const Home = () => {
   };
   const inputRef = useRef(null);
   useEffect(() => {
-    if (inputList.length > 0 && inputList.active) {
+    if (inputList.active) {
       inputRef.current = inputRef.current.focus();
     }
-  }, [inputList]);
+  }, [inputList.active]);
   const handleChange = (id, value) => {
     const updateInputList = inputList.map((input) => {
       if (id === input.id) {
@@ -47,7 +47,6 @@ const Home = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputList);
-    // console.log("hello");
   };
   return (
     <div
