@@ -3,6 +3,11 @@ import "../css/Home.css";
 import Moon from "../components/r3f/Moon";
 import HomeHeader from "../components/home/HomeHeader";
 import LogIn from "../components/home/LogIn";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useLoginUserMutation } from "../redux/authApi";
+import { setUser } from "../redux/authSlice";
+import { jwtDecode } from "jwt-decode";
 
 const Home = () => {
   const [coord, setCoord] = useState([]);
@@ -37,17 +42,46 @@ const Home = () => {
           value,
           active: false,
         };
-        console.log(newInput);
+        // console.log(newInput);
         return newInput;
       }
       return input;
     });
     setInputList(updateInputList);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(inputList);
+  //   log in
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [loginUser, { data: loginData, isSuccess: isLoginSuccess }] =
+    useLoginUserMutation();
+  const handleSubmit = async (e) => {
+    await e.preventDefault();
+    if (inputList[0].value && inputList[1].value) {
+      await loginUser({
+        username: inputList[0].value,
+        password: inputList[1].value,
+      });
+    } else {
+      console.log("error occured");
+    }
   };
+  useEffect(() => {
+    if (isLoginSuccess) {
+      dispatch(
+        setUser({
+          user_id: jwtDecode(loginData.access).user_id,
+          first_name: jwtDecode(loginData.access).first_name,
+          last_name: jwtDecode(loginData.access).last_name,
+          username: jwtDecode(loginData.access).username,
+          email: jwtDecode(loginData.access).email,
+          refresh: loginData["refresh"],
+          access: loginData["access"],
+        })
+      );
+      console.log("log in success");
+      navigate(`/${inputList[0].value}`);
+    }
+  }, [isLoginSuccess]);
   return (
     <div
       className="home-wrapper"

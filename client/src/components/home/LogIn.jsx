@@ -14,7 +14,7 @@ const LogIn = ({ id, inputRef, y_coord, x_coord, value, handleChange }) => {
       className={`home-input ${id == 0 ? "username" : ""} ${
         id == 1 ? "password" : ""
       }`}
-      type={`${id == 1 ? "password" : "text"}`}
+      type={`text`}
       onChange={handleChange}
       value={value}
     />
