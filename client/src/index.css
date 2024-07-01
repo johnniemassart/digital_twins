@@ -19,3 +19,67 @@ body {
 input:focus {
   outline: none;
 }
+
+/* nav header */
+.nav-wrapper {
+  /* height: 100px;
+    width: 100%; */
+  grid-area: "nav-header";
+  position: sticky;
+  top: 0;
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.nav-link-wrapper {
+  /* border: 1px solid green; */
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: rgba(71, 71, 71, 0.8);
+  width: 200px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-links {
+  color: white;
+  /* border: 1px solid orangered; */
+  width: 46%;
+  height: 80%;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links:hover {
+  cursor: pointer;
+}
+
+.feed-btn {
+  background-color: black;
+}
+
+/* .profile-btn {
+    background-color: black;
+  } */
+
+.logout-btn {
+  border: none;
+  margin-right: 20px;
+  margin-top: 20px;
+  background-color: rgba(71, 71, 71, 0.8);
+  color: white;
+  width: 80px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.logout-btn:hover {
+  cursor: pointer;
+}
