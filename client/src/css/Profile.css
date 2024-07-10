@@ -1,0 +1,46 @@
+.profile-wrapper {
+  height: 100svh;
+  /* border: 1px solid orange; */
+  display: grid;
+  grid-template-areas: "nav-header" "account" "profile";
+  grid-template-rows: 130px 200px 1fr;
+}
+
+.profile-account {
+  grid-area: account;
+  border: 1px solid purple;
+  display: grid;
+  grid-template-areas: "prof_pic about other";
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.profile-pic-wrapper {
+  /* border: 1px solid green; */
+  grid-area: prof_pic;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pic {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.profile-about-wrapper {
+  border: 1px solid green;
+  grid-area: about;
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+}
+
+.profile-profile {
+  grid-area: profile;
+  border: 1px solid yellow;
+}

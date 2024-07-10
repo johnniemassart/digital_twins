@@ -76,4 +76,17 @@
 .dashboard-feed-wrapper {
   grid-area: "feed";
   border: 1px solid red;
+  color: aliceblue;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  grid-auto-rows: 250px;
+}
+
+.following-post-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
